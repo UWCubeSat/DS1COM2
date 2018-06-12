@@ -1,0 +1,45 @@
+TODO style
+- Spacing
+- capitalization
+
+TODO module
+- rename logicflow -> MetalCore
+- create Metal package 
+
+TODO performance
+- add MetalForgery module: 
+	- C code translation 
+	- .so generation pipeline
+	- RasPi kernel driver: loader, interrupt
+	- API high-perf hookup
+
+TODO HW
+- [DONE] implement a "dump all"/"dump selective" command
+- implement an interactive mode
+
+TODO DOM
+- Use decorators whenever possible
+- Idea
+	- Fields as classes? 
+	- constants as inner values? (of the Field derived class)
+
+TODO API model
+- Register reference idea - how to genericize algorithmns? 
+  (I want to avoid having specialized routines for a certain reg. inst.)
+
+
+TODO checking
+- We should be unable to fill-to-zero r/o registers
+- detect duplicate fields with the same name! 
+
+
+TODO other
+- Base classes
+	 - consider a base class for RXB0CTRLx and RXB1CTRLx
+- [DONE] simplify register printing (use toString consistently)
+
+TODO licensing 
+- [DONE] Add MIT licensing header
+- [DONE] Add licensing header in every file
+- Ask for feedback
+- Publish 

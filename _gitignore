@@ -1,0 +1,6 @@
+*.py[cod]     # Will match .pyc, .pyo and .pyd files.
+*.pyc
+__pycache__
+__pycache__/**  # Exclude the whole folder
+output*.txt
+.vs

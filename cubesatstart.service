@@ -1,0 +1,12 @@
+[Unit]
+Description=cubesat initialization
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /home/pi/comm2/cubesat-setup.sh start
+WorkingDirectory=/home/pi/comm2/
+StandardOutput=inherit
+StandardError=inherit
+
+[Install]
+WantedBy=multi-user.target

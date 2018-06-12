@@ -1,0 +1,5 @@
+Thanks go to the following people for patches and contributions:
+
+- Adi Oltean, Quick2space, <adi.oltean@quick2space.org>, 2/3/2018
+
+
