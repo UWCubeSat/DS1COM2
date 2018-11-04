@@ -171,7 +171,7 @@
     <key>variable_ldpc_decoder_def</key>
     <param>
       <key>file</key>
-      <value>gr.prefix() + "/share/gnuradio/fec/ldpc/" + "n_0512_k_0130_gap_21.alist"</value>
+      <value>gr.prefix() + "/share/gnuradio/fec/ldpc/" + "simple_g_matrix.alist"</value>
     </param>
     <param>
       <key>comment</key>
@@ -222,7 +222,7 @@
     <key>variable_ldpc_encoder_def</key>
     <param>
       <key>file</key>
-      <value>gr.prefix() + "/share/gnuradio/fec/ldpc/" + "n_0512_k_0130_gap_21.alist"</value>
+      <value>gr.prefix() + "/share/gnuradio/fec/ldpc/" + "simple_g_matrix.alist"</value>
     </param>
     <param>
       <key>comment</key>
@@ -651,7 +651,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(288, 259)</value>
+      <value>(313, 366)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -951,7 +951,7 @@ class blk(gr.basic_block):  # other base classes are basic_block, decim_block, i
     </param>
     <param>
       <key>file</key>
-      <value>/home/gdreyfus/sentgreat.txt</value>
+      <value>/home/gdreyfus/sentsagan.jpg</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -1002,7 +1002,7 @@ class blk(gr.basic_block):  # other base classes are basic_block, decim_block, i
     </param>
     <param>
       <key>file</key>
-      <value>/home/gdreyfus/blorp.txt</value>
+      <value>/home/gdreyfus/sagan.jpg</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -1065,7 +1065,7 @@ class blk(gr.basic_block):  # other base classes are basic_block, decim_block, i
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(18, 138)</value>
+      <value>(36, 169)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1285,7 +1285,7 @@ class blk(gr.basic_block):  # other base classes are basic_block, decim_block, i
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(295, 206)</value>
+      <value>(467, 181)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1838,7 +1838,7 @@ class barker_sync(gr.basic_block):
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(73, 193)</value>
+      <value>(233, 187)</value>
     </param>
     <param>
       <key>_rotation</key>

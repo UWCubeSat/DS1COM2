@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Mpsk Stage3
-# Generated: Sun Nov  4 12:53:06 2018
+# Generated: Sun Nov  4 13:11:22 2018
 ##################################################
 
 if __name__ == '__main__':
@@ -79,10 +79,10 @@ class mpsk_stage3(gr.top_block, Qt.QWidget):
         self.excess_bw = excess_bw = 0.35
 
 
-        self.encoder_variable = encoder_variable = fec.ldpc_encoder_make(gr.prefix() + "/share/gnuradio/fec/ldpc/" + "n_0512_k_0130_gap_21.alist");
+        self.encoder_variable = encoder_variable = fec.ldpc_encoder_make(gr.prefix() + "/share/gnuradio/fec/ldpc/" + "simple_g_matrix.alist");
 
 
-        self.decoder_variable = decoder_variable = fec.ldpc_decoder.make(gr.prefix() + "/share/gnuradio/fec/ldpc/" + "n_0512_k_0130_gap_21.alist", 0.5, 50);
+        self.decoder_variable = decoder_variable = fec.ldpc_decoder.make(gr.prefix() + "/share/gnuradio/fec/ldpc/" + "simple_g_matrix.alist", 0.5, 50);
 
         self.dbpsk = dbpsk = digital.constellation_bpsk().base()
 
@@ -237,9 +237,9 @@ class mpsk_stage3(gr.top_block, Qt.QWidget):
         self.blocks_unpacked_to_packed_xx_0_0 = blocks.unpacked_to_packed_bb(1, gr.GR_MSB_FIRST)
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate,True)
         self.blocks_packed_to_unpacked_xx_0 = blocks.packed_to_unpacked_bb(1, gr.GR_MSB_FIRST)
-        self.blocks_file_source_0 = blocks.file_source(gr.sizeof_char*1, '/home/gdreyfus/blorp.txt', False)
+        self.blocks_file_source_0 = blocks.file_source(gr.sizeof_char*1, '/home/gdreyfus/sagan.jpg', False)
         self.blocks_file_source_0.set_begin_tag(pmt.PMT_NIL)
-        self.blocks_file_sink_1 = blocks.file_sink(gr.sizeof_char*1, '/home/gdreyfus/sentgreat.txt', False)
+        self.blocks_file_sink_1 = blocks.file_sink(gr.sizeof_char*1, '/home/gdreyfus/sentsagan.jpg', False)
         self.blocks_file_sink_1.set_unbuffered(True)
         self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_char*1, 'zappppp', False)
         self.blocks_file_sink_0.set_unbuffered(False)
