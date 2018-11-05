@@ -171,7 +171,7 @@
     <key>variable_ldpc_encoder_def</key>
     <param>
       <key>file</key>
-      <value>gr.prefix() + "/share/gnuradio/fec/ldpc/" + "n_0100_k_0042_gap_02.alist"</value>
+      <value>gr.prefix() + "/share/gnuradio/fec/ldpc/" + "simple_g_matrix.alist"</value>
     </param>
     <param>
       <key>comment</key>
@@ -187,11 +187,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(633, 433)</value>
+      <value>(283, 320)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -739,7 +739,7 @@ class blk(gr.basic_block):  # other base classes are basic_block, decim_block, i
 
 	self.barkersequence = [0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0]*2
 	self.syncLength = len(self.barkersequence)
-	self.PACKET_SIZE = 1024
+	self.PACKET_SIZE = 512
 
     def general_work(self, input_items, output_items):
         """example: multiply with constant"""
@@ -1010,7 +1010,7 @@ class blk(gr.basic_block):  # other base classes are basic_block, decim_block, i
     </param>
   </block>
   <block>
-    <key>fec_generic_encoder</key>
+    <key>fec_extended_encoder</key>
     <param>
       <key>alias</key>
       <value></value>
@@ -1020,20 +1020,20 @@ class blk(gr.basic_block):  # other base classes are basic_block, decim_block, i
       <value></value>
     </param>
     <param>
-      <key>encoder</key>
-      <value>encoder_variable</value>
-    </param>
-    <param>
       <key>affinity</key>
       <value></value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
+    </param>
+    <param>
+      <key>encoder_list</key>
+      <value>encoder_variable</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(98, 209)</value>
+      <value>(80, 212)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1041,11 +1041,7 @@ class blk(gr.basic_block):  # other base classes are basic_block, decim_block, i
     </param>
     <param>
       <key>id</key>
-      <value>fec_generic_encoder_0</value>
-    </param>
-    <param>
-      <key>itype</key>
-      <value>byte</value>
+      <value>fec_extended_encoder_0_0_0</value>
     </param>
     <param>
       <key>maxoutbuf</key>
@@ -1056,8 +1052,12 @@ class blk(gr.basic_block):  # other base classes are basic_block, decim_block, i
       <value>0</value>
     </param>
     <param>
-      <key>otype</key>
-      <value>byte</value>
+      <key>puncpat</key>
+      <value>"11"</value>
+    </param>
+    <param>
+      <key>threadtype</key>
+      <value>none</value>
     </param>
   </block>
   <block>
@@ -1261,7 +1261,7 @@ class blk(gr.basic_block):  # other base classes are basic_block, decim_block, i
   </connection>
   <connection>
     <source_block_id>blocks_packed_to_unpacked_xx_0</source_block_id>
-    <sink_block_id>fec_generic_encoder_0</sink_block_id>
+    <sink_block_id>fec_extended_encoder_0_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -1278,7 +1278,7 @@ class blk(gr.basic_block):  # other base classes are basic_block, decim_block, i
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>fec_generic_encoder_0</source_block_id>
+    <source_block_id>fec_extended_encoder_0_0_0</source_block_id>
     <sink_block_id>Add_Barking_Code</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
