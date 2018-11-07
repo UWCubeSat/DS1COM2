@@ -15,20 +15,23 @@ class blk(gr.basic_block):  # other base classes are basic_block, decim_block, i
 
 	self.ENCODE_OUTPUT = 130
 	self.REMAINDER = self.ENCODE_OUTPUT%8
-
+	self.DATALENGTH = self.ENCODE_OUTPUT-self.REMAINDER
 
     def general_work(self, input_items, output_items):
         """example: multiply with constant"""
 	#TAKES in unpacked bytes and adds barker codes
-	packets = len(input_items)/self.ENCODE_OUTPUT
-	for j in range(packets):
-		if len(input_items[0]) > (self.ENCODE_OUTPUT - self.REMAINDER)*j and len(output_items[0]) > self.ENCODE_OUTPUT*j:
-			for i in range(self.ENCODE_OUTPUT- self.REMAINDER):
-				output_items[j*self.ENCODE_OUTPUT][i] = input_items[j*self.ENCODE_OUTPUT][i]
-			for i in range(self.ENCODE_OUTPUT-self.REMAINDER, self.ENCODE_OUTPUT):
-				output_items[j*self.ENCODE_OUTPUT][i] = 0
-			self.consume_each(self.ENCODE_OUTPUT-self.REMAINDER);
-	return self.ENCODE_OUTPUT * packets 
+
+	packets = min(int(len(input_items[0])/(self.DATALENGTH)),int(len(output_items[0])/(self.ENCODE_OUTPUT)))
+	if packets > 0:
+		print(packets)
+		for p in range(packets):
+			print("bop")
+			for index in range(self.DATALENGTH):
+				output_items[0][p*self.ENCODE_OUTPUT + index] = input_items[0][p*self.DATALENGTH +index]
+
+		self.consume_each(packets*self.DATALENGTH)
+		return(packets*self.ENCODE_OUTPUT)			
+		
 	return 0
 
 

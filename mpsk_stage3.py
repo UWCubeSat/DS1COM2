@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Mpsk Stage3
-# Generated: Mon Nov  5 15:29:40 2018
+# Generated: Wed Nov  7 15:31:47 2018
 ##################################################
 
 if __name__ == '__main__':
@@ -29,8 +29,8 @@ from gnuradio.filter import firdes
 from gnuradio.qtgui import Range, RangeWidget
 from optparse import OptionParser
 import Add_Barking_Code
-import Add_Barking_Code_0
 import Add_Barking_Code_0_0
+import Add_Barking_Code_0_1
 import epy_block_0
 import pmt
 import sip
@@ -246,8 +246,8 @@ class mpsk_stage3(gr.top_block, Qt.QWidget):
         self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_char*1, 'zappppp', False)
         self.blocks_file_sink_0.set_unbuffered(False)
         self.blocks_char_to_float_0_2_0 = blocks.char_to_float(1, 1)
+        self.Add_Barking_Code_0_1 = Add_Barking_Code_0_1.blk()
         self.Add_Barking_Code_0_0 = Add_Barking_Code_0_0.blk()
-        self.Add_Barking_Code_0 = Add_Barking_Code_0.blk()
         self.Add_Barking_Code = Add_Barking_Code.blk()
 
 
@@ -256,11 +256,11 @@ class mpsk_stage3(gr.top_block, Qt.QWidget):
         # Connections
         ##################################################
         self.connect((self.Add_Barking_Code, 0), (self.blocks_unpacked_to_packed_xx_1_0, 0))
-        self.connect((self.Add_Barking_Code_0, 0), (self.fec_extended_encoder_0_0_0, 0))
         self.connect((self.Add_Barking_Code_0_0, 0), (self.blocks_unpacked_to_packed_xx_0_0, 0))
+        self.connect((self.Add_Barking_Code_0_1, 0), (self.fec_extended_encoder_0_0_0, 0))
         self.connect((self.blocks_char_to_float_0_2_0, 0), (self.fec_extended_decoder_0_1_0, 0))
         self.connect((self.blocks_file_source_0, 0), (self.blocks_packed_to_unpacked_xx_0, 0))
-        self.connect((self.blocks_packed_to_unpacked_xx_0, 0), (self.Add_Barking_Code_0, 0))
+        self.connect((self.blocks_packed_to_unpacked_xx_0, 0), (self.Add_Barking_Code_0_1, 0))
         self.connect((self.blocks_throttle_0, 0), (self.channels_channel_model_0, 0))
         self.connect((self.blocks_unpacked_to_packed_xx_0_0, 0), (self.blocks_file_sink_1, 0))
         self.connect((self.blocks_unpacked_to_packed_xx_1_0, 0), (self.digital_constellation_modulator_0, 0))
