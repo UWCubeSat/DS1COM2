@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Mpsk Stage3
-# Generated: Wed Nov  7 15:31:47 2018
+# Generated: Sun Nov 18 09:17:29 2018
 ##################################################
 
 if __name__ == '__main__':
@@ -22,15 +22,17 @@ from gnuradio import channels
 from gnuradio import digital
 from gnuradio import eng_notation
 from gnuradio import fec
+from gnuradio import fft
 from gnuradio import gr
 from gnuradio import qtgui
 from gnuradio.eng_option import eng_option
+from gnuradio.fft import window
 from gnuradio.filter import firdes
 from gnuradio.qtgui import Range, RangeWidget
 from optparse import OptionParser
 import Add_Barking_Code
 import Add_Barking_Code_0_0
-import Add_Barking_Code_0_1
+import Add_Barking_Code_0_1_0
 import epy_block_0
 import pmt
 import sip
@@ -121,6 +123,37 @@ class mpsk_stage3(gr.top_block, Qt.QWidget):
             self.top_grid_layout.setRowStretch(r, 1)
         for c in range(1, 2):
             self.top_grid_layout.setColumnStretch(c, 1)
+        self.qtgui_number_sink_0 = qtgui.number_sink(
+            gr.sizeof_float,
+            0,
+            qtgui.NUM_GRAPH_VERT,
+            1
+        )
+        self.qtgui_number_sink_0.set_update_time(0.10)
+        self.qtgui_number_sink_0.set_title("")
+
+        labels = ['', '', '', '', '',
+                  '', '', '', '', '']
+        units = ['', '', '', '', '',
+                 '', '', '', '', '']
+        colors = [("black", "black"), ("black", "black"), ("black", "black"), ("black", "black"), ("black", "black"),
+                  ("black", "black"), ("black", "black"), ("black", "black"), ("black", "black"), ("black", "black")]
+        factor = [1, 1, 1, 1, 1,
+                  1, 1, 1, 1, 1]
+        for i in xrange(1):
+            self.qtgui_number_sink_0.set_min(i, -1)
+            self.qtgui_number_sink_0.set_max(i, 1)
+            self.qtgui_number_sink_0.set_color(i, colors[i][0], colors[i][1])
+            if len(labels[i]) == 0:
+                self.qtgui_number_sink_0.set_label(i, "Data {0}".format(i))
+            else:
+                self.qtgui_number_sink_0.set_label(i, labels[i])
+            self.qtgui_number_sink_0.set_unit(i, units[i])
+            self.qtgui_number_sink_0.set_factor(i, factor[i])
+
+        self.qtgui_number_sink_0.enable_autoscale(True)
+        self._qtgui_number_sink_0_win = sip.wrapinstance(self.qtgui_number_sink_0.pyqwidget(), Qt.QWidget)
+        self.top_grid_layout.addWidget(self._qtgui_number_sink_0_win)
         self.qtgui_const_sink_x_0_0 = qtgui.const_sink_c(
         	2048, #size
         	'', #name
@@ -166,51 +199,7 @@ class mpsk_stage3(gr.top_block, Qt.QWidget):
             self.top_grid_layout.setRowStretch(r, 1)
         for c in range(2, 4):
             self.top_grid_layout.setColumnStretch(c, 1)
-        self.qtgui_const_sink_x_0 = qtgui.const_sink_c(
-        	2048, #size
-        	'', #name
-        	1 #number of inputs
-        )
-        self.qtgui_const_sink_x_0.set_update_time(0.10)
-        self.qtgui_const_sink_x_0.set_y_axis(-2, 2)
-        self.qtgui_const_sink_x_0.set_x_axis(-2, 2)
-        self.qtgui_const_sink_x_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, qtgui.TRIG_SLOPE_POS, 0.0, 0, "")
-        self.qtgui_const_sink_x_0.enable_autoscale(False)
-        self.qtgui_const_sink_x_0.enable_grid(False)
-        self.qtgui_const_sink_x_0.enable_axis_labels(True)
-
-        if not True:
-          self.qtgui_const_sink_x_0.disable_legend()
-
-        labels = ['RX Data', '', '', '', '',
-                  '', '', '', '', '']
-        widths = [1, 1, 1, 1, 1,
-                  1, 1, 1, 1, 1]
-        colors = ["blue", "red", "green", "black", "cyan",
-                  "magenta", "yellow", "dark red", "dark green", "red"]
-        styles = [0, 0, 0, 0, 0,
-                  0, 0, 0, 0, 0]
-        markers = [0, 0, 0, 0, 0,
-                   0, 0, 0, 0, 0]
-        alphas = [0.5, 1.0, 1.0, 1.0, 1.0,
-                  1.0, 1.0, 1.0, 1.0, 1.0]
-        for i in xrange(1):
-            if len(labels[i]) == 0:
-                self.qtgui_const_sink_x_0.set_line_label(i, "Data {0}".format(i))
-            else:
-                self.qtgui_const_sink_x_0.set_line_label(i, labels[i])
-            self.qtgui_const_sink_x_0.set_line_width(i, widths[i])
-            self.qtgui_const_sink_x_0.set_line_color(i, colors[i])
-            self.qtgui_const_sink_x_0.set_line_style(i, styles[i])
-            self.qtgui_const_sink_x_0.set_line_marker(i, markers[i])
-            self.qtgui_const_sink_x_0.set_line_alpha(i, alphas[i])
-
-        self._qtgui_const_sink_x_0_win = sip.wrapinstance(self.qtgui_const_sink_x_0.pyqwidget(), Qt.QWidget)
-        self.top_grid_layout.addWidget(self._qtgui_const_sink_x_0_win, 1, 0, 1, 2)
-        for r in range(1, 2):
-            self.top_grid_layout.setRowStretch(r, 1)
-        for c in range(0, 2):
-            self.top_grid_layout.setColumnStretch(c, 1)
+        self.fft_vxx_0 = fft.fft_vcc(1024, True, (window.blackmanharris(1024)), True, 1)
         self.fec_extended_encoder_0_0_0 = fec.extended_encoder(encoder_obj_list=encoder_variable, threading= None, puncpat="11")
         self.fec_extended_decoder_0_1_0 = fec.extended_decoder(decoder_obj_list=decoder_variable, threading='ordinary', ann=None, puncpat="11", integration_period=10000)
         self.epy_block_0 = epy_block_0.barker_sync()
@@ -238,16 +227,17 @@ class mpsk_stage3(gr.top_block, Qt.QWidget):
         self.blocks_unpacked_to_packed_xx_1_0 = blocks.unpacked_to_packed_bb(1, gr.GR_MSB_FIRST)
         self.blocks_unpacked_to_packed_xx_0_0 = blocks.unpacked_to_packed_bb(1, gr.GR_MSB_FIRST)
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate,True)
+        self.blocks_stream_to_vector_0 = blocks.stream_to_vector(gr.sizeof_gr_complex*1, 1024)
         self.blocks_packed_to_unpacked_xx_0 = blocks.packed_to_unpacked_bb(1, gr.GR_MSB_FIRST)
+        self.blocks_max_xx_0 = blocks.max_ff(1024,1)
         self.blocks_file_source_0 = blocks.file_source(gr.sizeof_char*1, '/home/gdreyfus/sagan.jpg', False)
         self.blocks_file_source_0.set_begin_tag(pmt.PMT_NIL)
         self.blocks_file_sink_1 = blocks.file_sink(gr.sizeof_char*1, '/home/gdreyfus/sentsagan.jpg', False)
         self.blocks_file_sink_1.set_unbuffered(True)
         self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_char*1, 'zappppp', False)
         self.blocks_file_sink_0.set_unbuffered(False)
+        self.blocks_complex_to_mag_squared_0 = blocks.complex_to_mag_squared(1024)
         self.blocks_char_to_float_0_2_0 = blocks.char_to_float(1, 1)
-        self.Add_Barking_Code_0_1 = Add_Barking_Code_0_1.blk()
-        self.Add_Barking_Code_0_0 = Add_Barking_Code_0_0.blk()
         self.Add_Barking_Code = Add_Barking_Code.blk()
 
 
@@ -256,16 +246,17 @@ class mpsk_stage3(gr.top_block, Qt.QWidget):
         # Connections
         ##################################################
         self.connect((self.Add_Barking_Code, 0), (self.blocks_unpacked_to_packed_xx_1_0, 0))
-        self.connect((self.Add_Barking_Code_0_0, 0), (self.blocks_unpacked_to_packed_xx_0_0, 0))
-        self.connect((self.Add_Barking_Code_0_1, 0), (self.fec_extended_encoder_0_0_0, 0))
         self.connect((self.blocks_char_to_float_0_2_0, 0), (self.fec_extended_decoder_0_1_0, 0))
+        self.connect((self.blocks_complex_to_mag_squared_0, 0), (self.blocks_max_xx_0, 0))
         self.connect((self.blocks_file_source_0, 0), (self.blocks_packed_to_unpacked_xx_0, 0))
-        self.connect((self.blocks_packed_to_unpacked_xx_0, 0), (self.Add_Barking_Code_0_1, 0))
+        self.connect((self.blocks_max_xx_0, 0), (self.qtgui_number_sink_0, 0))
+        self.connect((self.blocks_packed_to_unpacked_xx_0, 0), (self.fec_extended_encoder_0_0_0, 0))
+        self.connect((self.blocks_stream_to_vector_0, 0), (self.fft_vxx_0, 0))
         self.connect((self.blocks_throttle_0, 0), (self.channels_channel_model_0, 0))
         self.connect((self.blocks_unpacked_to_packed_xx_0_0, 0), (self.blocks_file_sink_1, 0))
         self.connect((self.blocks_unpacked_to_packed_xx_1_0, 0), (self.digital_constellation_modulator_0, 0))
+        self.connect((self.channels_channel_model_0, 0), (self.blocks_stream_to_vector_0, 0))
         self.connect((self.channels_channel_model_0, 0), (self.digital_pfb_clock_sync_xxx_0, 0))
-        self.connect((self.channels_channel_model_0, 0), (self.qtgui_const_sink_x_0, 0))
         self.connect((self.digital_constellation_modulator_0, 0), (self.blocks_throttle_0, 0))
         self.connect((self.digital_constellation_receiver_cb_0, 0), (self.digital_diff_decoder_bb_0, 0))
         self.connect((self.digital_diff_decoder_bb_0, 0), (self.blocks_file_sink_0, 0))
@@ -274,8 +265,9 @@ class mpsk_stage3(gr.top_block, Qt.QWidget):
         self.connect((self.digital_pfb_clock_sync_xxx_0, 0), (self.digital_constellation_receiver_cb_0, 0))
         self.connect((self.digital_pfb_clock_sync_xxx_0, 0), (self.qtgui_const_sink_x_0_0, 0))
         self.connect((self.epy_block_0, 0), (self.digital_map_bb_0_0_0_0, 0))
-        self.connect((self.fec_extended_decoder_0_1_0, 0), (self.Add_Barking_Code_0_0, 0))
+        self.connect((self.fec_extended_decoder_0_1_0, 0), (self.blocks_unpacked_to_packed_xx_0_0, 0))
         self.connect((self.fec_extended_encoder_0_0_0, 0), (self.Add_Barking_Code, 0))
+        self.connect((self.fft_vxx_0, 0), (self.blocks_complex_to_mag_squared_0, 0))
 
     def closeEvent(self, event):
         self.settings = Qt.QSettings("GNU Radio", "mpsk_stage3")
