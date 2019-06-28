@@ -78,7 +78,7 @@ class MCP25625_api(object):
 
         with self.reg.CNF1 as cnf1:
 
-            # 0x83 = 0b.1000.0011
+            # 0x87 = 0b.1000.0111
 
             # synchronization jump width = 2 x T_Q
             cnf1.SJW = self.reg.CNF1.SJW_Length3TQ
@@ -86,7 +86,7 @@ class MCP25625_api(object):
             # Baud Rate Prescaler
             # Use 16 clock cycles 
             # T_Q = 2x(1+BRP)/F_OSC = 2x(1+7)/F_OSC = 16 / F_OSC
-            cnf1.BRP = 0b000011
+            cnf1.BRP = 0b000111
 
         with self.reg.CNF2 as cnf2:
 
